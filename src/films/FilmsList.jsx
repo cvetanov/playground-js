@@ -14,7 +14,6 @@ export default class FilmsList extends Component {
           films => (
             <DataFetcher fetch={films.fetch}>
               {films.state.movies.map(({ title, episode_id }) => <Film title={title} key={episode_id} />)}
-              <button onClick={films.addDummy} key="fetch">Fetch</button>
             </DataFetcher>
           )
         }
