@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import Home from "./Home";
 
 class App extends Component {
   render() {
@@ -13,6 +15,11 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+
+        <Router>
+          <Route exact path="/" component={Home} />
+        </Router>
+
       </div>
     );
   }
