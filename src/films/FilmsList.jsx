@@ -3,6 +3,7 @@ import { Subscribe } from "unstated";
 
 import FilmsContainer from "../state/FilmsContainer";
 import Film from "./Film";
+import DataFetcher from "../components/DataFetcher";
 
 export default class FilmsList extends Component {
 
@@ -10,11 +11,12 @@ export default class FilmsList extends Component {
     return (
       <Subscribe to={[FilmsContainer]}>
         {
-          films => [
-            // todo: fetch the data on mount instead of doing it on button click
-            <button onClick={films.fetch} key="fetch">Fetch</button>,
-            ...films.state.movies.map(({ title, episode_id }) => <Film title={title} key={episode_id}/>)
-          ]
+          films => (
+            <DataFetcher fetch={films.fetch}>
+              {films.state.movies.map(({ title, episode_id }) => <Film title={title} key={episode_id} />)}
+              <button onClick={films.addDummy} key="fetch">Fetch</button>
+            </DataFetcher>
+          )
         }
       </Subscribe>
     )
