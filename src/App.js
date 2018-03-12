@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
+import { Route, BrowserRouter as Router, Link } from "react-router-dom";
+import Loadable from 'react-loadable';
+
 import logo from './logo.svg';
 import './App.css';
-import { Route, BrowserRouter as Router } from "react-router-dom";
-import Home from "./Home";
-import { Provider } from "unstated";
+
+const Loading = () => <div>Loading</div>;
+
+const Home = Loadable({
+  loader: () => import('./Home'),
+  loading: Loading
+});
+
+const FilmsPage = Loadable({
+  loader: () => import('./films/FilmsPage'),
+  loading: Loading
+});
 
 class App extends Component {
   render() {
@@ -18,7 +30,19 @@ class App extends Component {
         </p>
 
         <Router>
-          <Route exact path="/" component={Home} />
+          <div>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/films">Films</Link>
+              </li>
+            </ul>
+            <hr />
+            <Route exact path="/" component={Home} />
+            <Route path="/films" component={FilmsPage} />
+          </div>
         </Router>
 
       </div>
