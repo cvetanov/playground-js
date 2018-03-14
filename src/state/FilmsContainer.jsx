@@ -1,5 +1,6 @@
 import { Container } from 'unstated';
 import { fetch } from "./filmsFetcher";
+import { trackable } from "../decorators/trackable";
 
 export default class FilmsContainer extends Container {
 
@@ -7,6 +8,7 @@ export default class FilmsContainer extends Container {
     movies: []
   };
 
+  @trackable('FETCH_MOVIES')
   fetch = async () => {
     const { results: movies } = await fetch();
     this.addAll(movies);
