@@ -1,13 +1,10 @@
 
 import React from 'react';
 
-import { Provider } from "unstated";
 import FilmsList from "./FilmsList";
 
-const FilmsPage = () => (
-  <Provider>
-    <FilmsList />
-  </Provider>
+const FilmsPage = ({ match }) => (
+  <FilmsList match={match} />
 );
 
 export default FilmsPage;
