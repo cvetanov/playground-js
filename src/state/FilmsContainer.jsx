@@ -4,21 +4,23 @@ import { fetch } from "./filmsFetcher";
 export default class FilmsContainer extends Container {
 
   state = {
-    movies: []
+    movies: {}
   };
 
   fetch = async () => {
     const { results: movies } = await fetch();
-    this.addAll(movies);
+    this.setMovies(movies);
   };
-  addDummy = () => {
-    this.setState({
-      movies: [...this.state.movies, { episode_id: -1, title: 'Leroy Jenkins' }]
-    });
+
+  get = () => {
+    return Object.values(this.state.movies);
   };
-  addAll = (movies) => {
+
+  getByEpisodeId = (episodeId) => this.state.movies[episodeId];
+
+  setMovies = (movies) => {
     this.setState({
-      movies: [...this.state.movies, ...movies]
+      movies: movies.reduce((acc, curr) => ({ ...acc, [curr.episode_id]: curr }), {})
     });
   };
 
