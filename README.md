@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It is used for trying out stuff and it does not follow any guidelines.
 
-![nothing-to-see-here](https://m.popkey.co/e5ef9b/ygqVx.gif)
+<img src="/nothing-to-see.gif?raw=true" width="500px" height="284px">
