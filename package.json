@@ -96,5 +96,9 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "memory-fs": "^0.4.1",
+    "prerender-loader": "^1.0.0"
   }
 }
